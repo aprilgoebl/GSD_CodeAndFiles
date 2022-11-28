@@ -1,5 +1,5 @@
 ## Great Sand Dune (GSD), Helianthus petiolaris, reciprocal transplant data analysis script
-## Script that uses 2012 (& 2010, 2011) GSD reciprocal transplant data in demographic model
+## Script that uses 2012 (& 2010, 2011) GSD reciprocal transplant data in demographic models
 ## Estimates fitness components, lambda and performs life table response experiment (LTRE): 
 ## 1. Uses logistic regression to model emergence and survival rates 
 ## 2. Uses negative binomial to model fecundity (number of seeds or inflorescences produced)
@@ -274,7 +274,7 @@ par(mar=c(5,6,3,1))
 
 
 
-## Plot fitness components estimates with confidence intervals
+## Plot fitness component estimates with confidence intervals
 
 ##2012 mixed model
 
@@ -327,7 +327,7 @@ lines(c(prSurv$predicted[1],prSurv$predicted[2]),col=colD_ln,lwd=2)
 lines(c(prSurv$predicted[3],prSurv$predicted[4]),col=colH_ln,lwd=2)
 lines(c(prSurv$predicted[5],prSurv$predicted[6]), col=colN_ln,lwd=2) 
 
-## Add CIs
+## Add CIs (jittered for visual clarity)
 arrows(1.001,prSurv$predicted[1],1.001, (prSurv$conf.low[1]), lwd = 1.5, angle = 90, code = 3, length=0, col=colD)
 arrows(1.001,prSurv$predicted[1],1.001, (prSurv$conf.high[1]), lwd = 1.5, angle = 90, code = 3, length=0, col=colD)
 arrows(2.001,prSurv$predicted[2],2.001, (prSurv$conf.low[2]), lwd = 1.5, angle = 90, code = 3, length=0,col=colD)
@@ -360,7 +360,7 @@ lines(c(prSds$predicted[1],prSds$predicted[2]),col=colD_ln,lwd=2)
 lines(c(prSds$predicted[3],prSds$predicted[4]),col=colH_ln,lwd=2)
 lines(c(prSds$predicted[5],prSds$predicted[6]), col=colN_ln,lwd=2) 
 
-## Add CIs
+## Add CIs (jittered for visual clarity)
 arrows(1.001,prSds$predicted[1],1.001, prSds$predicted[1]-ddCI, lwd = 1.5, angle = 90, code = 3, length=0, col=colD)
 arrows(1.001,prSds$predicted[1],1.001, prSds$predicted[1]+ddCI, lwd = 1.5, angle = 90, code = 3, length=0, col=colD)
 arrows(2.001,prSds$predicted[2],2.001, prSds$predicted[2]-ndCI, lwd = 1.5, angle = 90, code = 3, length=0,col=colD)
@@ -369,7 +369,7 @@ arrows(0.999,prSds$predicted[3],0.999, prSds$predicted[3]-dhCI, lwd = 1.5, angle
 arrows(0.999,prSds$predicted[3],0.999, prSds$predicted[3]+dhCI, lwd = 1.5, angle = 90, code = 3, length=0,col=colH)
 arrows(2,prSds$predicted[4],2, prSds$predicted[4]-nhCI, lwd = 1.5, angle = 90, code = 3, length=0,col=colH)
 arrows(2,prSds$predicted[4],2, prSds$predicted[4]+nhCI, lwd = 1.5, angle = 90,code = 3, length=0,col=colH)
-arrows(1,prSds$predicted[5],1, 1, lwd = 1.5, angle = 90,code = 3, length=0,col=colN) # **** CORRECT *****
+arrows(1,prSds$predicted[5],1, 1, lwd = 1.5, angle = 90,code = 3, length=0,col=colN) #Plot as 0 (log(1)) since can't plot negative value on log scale
 arrows(1,prSds$predicted[5],1, prSds$predicted[5]+dnCI, lwd = 1.5, angle = 90,code = 3, length=0,col=colN)
 arrows(1.999,prSds$predicted[6],1.999, prSds$predicted[6]-nnCI, lwd = 1.5, angle = 90,code = 3, length=0,col=colN)
 arrows(1.999,prSds$predicted[6],1.999, prSds$predicted[6]+nnCI, lwd = 1.5, angle = 90,code = 3, length=0,col=colN)
